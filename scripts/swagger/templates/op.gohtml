@@ -1,0 +1,28 @@
+{{ with $service := .}}
+package docs
+
+import (
+"github.com/agorago/{{$service.Name}}api/api"
+)
+{{range $index,$op := $service.Operations}}
+// swagger:route {{$op.HTTPMethod}} {{$op.URL}} {{$op.Name}}-tag {{$op.Name}}RequestWrapper
+// {{$op.Description}}
+// responses:
+//   200: {{$op.Name}}ResponseWrapper
+
+// {{$op.ResponseDescription}}
+// swagger:response {{$op.Name}}ResponseWrapper
+type {{$op.Name}}ResponseWrapper struct {
+// in:body
+Body api.{{$op.Name}}Response
+}
+
+// swagger:parameters {{$op.Name}}RequestWrapper
+type {{$op.Name}}RequestWrapper struct{
+// {{$op.RequestDescription}}
+// in:body
+Body api.{{$op.Name}}Request
+}
+{{end}}
+
+{{end}}
