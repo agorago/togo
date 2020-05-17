@@ -49,29 +49,29 @@ prepare-dependencies: generate-error-codes generate-dependencies-go copy-bundles
 ## copy-tests: Copies the feature test files from all dependencies
 .PHONY: copy-tests
 copy-tests: 
-	internal/scripts/prepare-dependencies/copy-tests.sh
+	${TOGODIR}/scripts/prepare-dependencies/copy-tests.sh
 
 ## generate-main-test-go: Generates the main test file. Makes sure that it invokes all modules
 .PHONY: generate-main-test-go
 generate-main-test-go: 
-	internal/scripts/prepare-dependencies/generate-main-test-go.sh
+	${TOGODIR}/scripts/prepare-dependencies/generate-main-test-go.sh
 
 # generate-dependencies-go: Generates the dependencies.go file from dependencies.txt
 .PHONY: generate-dependencies-go
 generate-dependencies-go: 
-	internal/scripts/prepare-dependencies/generate-dependencies-go.sh 
+	${TOGODIR}/scripts/prepare-dependencies/generate-dependencies-go.sh
 	 
 # This is an internal task invoked by the prepare-dependencies and does not need to appear as a
 # help line. Hence there is only one pound in the comment.
 # copy-bundles: Copies the bundle files from individual modules to a common CONFIG folder
 .PHONY: copy-bundles
 copy-bundles:
-	internal/scripts/prepare-dependencies/copy-bundles.sh
+	${TOGODIR}/scripts/prepare-dependencies/copy-bundles.sh
 
 # generate-error-codes: Generates error codes from enum constants (using iota)
 .PHONY: generate-error-codes
 generate-error-codes:
-	internal/scripts/prepare-dependencies/gen-error.sh 
+	${TOGODIR}/scripts/prepare-dependencies/gen-error.sh
 
 
 ## test-scripts: Execute all tests from command line
@@ -101,7 +101,7 @@ swagger-gen-build: create-bin
 .PHONY: swagger-docs
 swagger-docs: swagger-gen-build
 	@echo "Building swagger documentation for the service"
-	internal/scripts/swagger/swagger-generate.sh
+	${TOGODIR}/scripts/swagger/swagger-generate.sh
 
 ## swagger-build: Build the swagger.yaml file from the doc specification
 .PHONY: swagger-build
