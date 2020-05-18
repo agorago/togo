@@ -101,7 +101,7 @@ swagger-gen-build: create-bin
 .PHONY: swagger-docs
 swagger-docs: swagger-gen-build
 	@echo "Building swagger documentation for the service"
-	${TOGODIR}/scripts/swagger/swagger-generate.sh
+	${TOGODIR}/scripts/swagger/swagger-generate.sh $(WEGO__APPLICATION_NAME)
 
 ## swagger-build: Build the swagger.yaml file from the doc specification
 .PHONY: swagger-build
