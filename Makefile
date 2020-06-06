@@ -44,7 +44,7 @@ docker-run:
 
 ## prepare-dependencies: Prepares the dependencies from dependencies.txt
 .PHONY: prepare-dependencies
-prepare-dependencies: generate-error-codes generate-dependencies-go copy-bundles
+prepare-dependencies: generate-error-codes generate-dependencies-go copy-configs
 
 ## copy-tests: Copies the feature test files from all dependencies
 .PHONY: copy-tests
@@ -63,10 +63,10 @@ generate-dependencies-go:
 	 
 # This is an internal task invoked by the prepare-dependencies and does not need to appear as a
 # help line. Hence there is only one pound in the comment.
-# copy-bundles: Copies the bundle files from individual modules to a common CONFIG folder
-.PHONY: copy-bundles
-copy-bundles:
-	${TOGODIR}/scripts/prepare-dependencies/copy-bundles.sh
+# copy-configs: Copies the configs from individual modules to a common CONFIG folder
+.PHONY: copy-configs
+copy-configs:
+	${TOGODIR}/scripts/prepare-dependencies/copy-configs.sh
 
 # generate-error-codes: Generates error codes from enum constants (using iota)
 .PHONY: generate-error-codes
