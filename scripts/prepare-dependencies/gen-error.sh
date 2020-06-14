@@ -11,3 +11,9 @@ do
         go generate $path_to_file
     fi
 done < dependencies.txt
+
+if [[ -f $errpath ]]
+then
+  go generate $errpath
+fi
+exit 0

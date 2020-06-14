@@ -188,7 +188,7 @@ all: help
 
 ## help: type for getting this help
 .PHONY: help
-help: Makefile
+help: Makefile.sample
 	@echo 
 	@echo " Choose a command to run in "$(PROJECTNAME)":"
 	@echo
